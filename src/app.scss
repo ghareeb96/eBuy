@@ -1,0 +1,30 @@
+@import "./config";
+
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+    font-family : "Raleway";
+}
+
+.container{
+    width : 90%;
+    margin : 0 auto;
+}
+
+.icon{
+    width : 24px;
+    height : 24px;
+}
+
+button{
+    border : none;
+    outline : none;
+    background : none;
+}
+
+span{
+    font-family: "Roboto";
+    color : $primary-accent-color;
+}
+

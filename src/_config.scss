@@ -1,0 +1,19 @@
+$primary-background-color : #ffffff;
+
+$header-background-color : #FDFDFD;
+
+$primary-accent-color : #AB6464;
+$secondary-accent-color : #30775D;
+
+
+
+
+$header-height : 80px;
+
+
+@mixin flexen($direction, $align :flex-start , $justify: flex-start) {
+    display : flex;
+    flex-direction : $direction ;
+    align-items: $align;
+    justify-content: $justify;
+}

@@ -1,0 +1,101 @@
+@import "../../config";
+
+.filters {
+    @include flexen(column);
+    min-height: 600px;
+    width: 220px;
+
+    .filter {
+        border: 1px solid $secondary-accent-color;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 2rem;
+        min-height: 120px;
+        @include flexen(column, center);
+
+        .filter-heading {
+            width: 100%;
+            background: $secondary-accent-color;
+            border-radius: 5px 5px 0 0;
+         
+
+            h5 {
+                color: white;
+                padding: 0.5rem;
+                text-align: center;
+            }
+        }
+
+        .filter-action {
+            width: 100%;
+            @include flexen(column);
+
+
+        }
+
+        &.price-range {
+            .filter-action {
+                margin-bottom: 10px;
+                align-items: center;
+
+                .price-range-values {
+                    width: 180px;
+                    margin: 10px;
+                    @include flexen(row, center, space-between);
+
+                    h4 {
+                        background: #eeeeee;
+                        border-radius: 3px;
+                        padding: 8px;
+                        font-weight: 500;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+
+        &.color {
+            .filter-action {
+                .color-menu {
+                    height: 250px;
+                    overflow-y: scroll;
+                    width: 100%;
+                    &::-webkit-scrollbar {
+                        width: 10px;
+                    }
+                    
+                    &::-webkit-scrollbar-thumb {
+                        background: lighten($secondary-accent-color, 25);
+                        border-radius: 4px;
+                    }
+
+                    .color-select {
+                        padding: 10px 15px;
+                        border-bottom: 1px solid #ccc;
+                        transition: all 0.2s ease-out;
+
+                        &:hover {
+                            background: #efefef;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.rating {
+            .filter-action {
+                .rating-option {
+                    @include flexen(row, center);
+                    margin: 0;
+                    padding: 8px 15px;
+                    width : 100%;
+                    transition: all 0.2s ease-out;
+
+                    &:hover {
+                        background: #efefef;
+                    }
+                }
+            }
+        }
+    }
+}

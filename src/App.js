@@ -3,10 +3,14 @@ import './app.scss';
 import Header from './components/Header/Header';
 import ProductCard from './components/ProductCard/ProductCard';
 import Slider from './components/Slider/Slider';
+import Filters from './components/Filters/Filters';
 
 function App() {
   const [products, setProducts] = useState(null)
   const [categories, setCategories] = useState(null)
+  const [colors, setColors] = useState([])
+
+
 
 
   const getProducts = () => {
@@ -27,6 +31,18 @@ function App() {
     getCategories();
   }, [])
 
+  useEffect(() => {
+    if (products !== null && colors.length === 0) {
+      const allColors = [];
+      products.forEach(product => {
+        if (!allColors.includes(product.color)) {
+          allColors.push(product.color)
+        }
+      })
+      setColors(allColors)
+    }
+  }, [products])
+
   return (
     <>
       {
@@ -46,7 +62,9 @@ function App() {
             <div className="products-section">
               <h2 className="section-heading">Browse Products</h2>
               <div className="container">
-                <div className="filters-side"></div>
+                <div className="filters-side">
+                  <Filters colors={colors}/>
+                </div>
                 <div className="products-side">
                   <div className="categories"></div>
                   <div className="products"></div>

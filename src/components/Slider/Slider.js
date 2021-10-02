@@ -11,7 +11,6 @@ const Slider = ({ items }) => {
     const [stopSlide, setStopSlide] = useState(false)
     let sliding
     let previewedCards = () => {
-        console.log(window.screen.availWidth)
         if (window.screen.availWidth < 400) {
             return 1;
         } else if (window.screen.availWidth < 800) {

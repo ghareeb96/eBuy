@@ -53,7 +53,51 @@ span {
     }
 }
 
-.App {}
+.App {
+    .products-section{
+        .container{
+            @include flexen(row);
+
+            .filters-side{
+                margin-right : 30px;
+            }
+
+            .products-side{
+                width :100%;
+                min-height : 400px;
+                @include flexen(column);
+                
+                .categories{
+                    @include flexen(row,center,space-evenly);
+                    flex-wrap: wrap;
+                    width : 100%;
+                    
+                    .category{
+                        background: lighten($primary-accent-color,42);
+                        margin-bottom: 10px;
+                        border-radius: 5px;
+
+                        h4{
+                            font-size : 1.4rem;
+                            font-weight: 500;
+                            padding : 0.4rem 1rem;
+                            pointer-events: none;
+                        }
+
+                        &.active-category{
+                            background : lighten($primary-accent-color,10);
+                            color : white;
+                        }
+                    }
+                }
+
+                .products{
+                    width : 100%;
+                }
+            }
+        }
+    }
+}
 
 .slider-container {
     width: 100%;

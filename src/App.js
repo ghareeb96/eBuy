@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './app.scss';
 import Header from './components/Header/Header';
-import ProductCard from './components/ProductCard/ProductCard';
 import Slider from './components/Slider/Slider';
 import Filters from './components/Filters/Filters';
+import Products from './components/Products/Products'
 
 function App() {
+  const initialFilters = {
+    categoryId: 0,
+    color: 'all',
+    priceRange: [1, 2000],
+    minRating: 1
+  }
+
   const [products, setProducts] = useState(null)
   const [categories, setCategories] = useState(null)
   const [colors, setColors] = useState([])
-
-
+  const [filtering, setFiltering] = useState(initialFilters);
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
 
   const getProducts = () => {
@@ -25,6 +32,9 @@ function App() {
       .then(data => setCategories(data))
   }
 
+  const changeCategory = (e) => {
+    setFiltering({ ...filtering, categoryId: e.target.id })
+  }
 
   useEffect(() => {
     getProducts();
@@ -42,6 +52,24 @@ function App() {
       setColors(allColors)
     }
   }, [products])
+
+  useEffect(() => {
+    let finalProducts = products;
+
+    if (products !== null) {
+      if (filtering.categoryId !== 0) {
+        finalProducts = finalProducts.filter(product =>  product.categoryId === parseInt(filtering.categoryId))
+      }
+
+      if (filtering.color !== 'all') {
+        finalProducts = finalProducts.filter(product => product.color === filtering.color)
+      }
+
+
+    }
+
+
+  }, [filtering, products])
 
   return (
     <>
@@ -63,11 +91,28 @@ function App() {
               <h2 className="section-heading">Browse Products</h2>
               <div className="container">
                 <div className="filters-side">
-                  <Filters colors={colors}/>
+                  <Filters colors={colors} />
                 </div>
                 <div className="products-side">
-                  <div className="categories"></div>
-                  <div className="products"></div>
+                  <div className="categories">
+                    <div className="category active-category" id="all">
+                      <h4>All</h4>
+                    </div>
+                    {
+                      categories ?
+
+                        categories.map(category => (
+                          <div className="category" id={category.id} onClick={changeCategory}>
+                            <h4>{category.name}</h4>
+                          </div>
+                        ))
+                        :
+                        <> </>
+                    }
+                  </div>
+                  <div className="products">
+                    <Products products={products} />
+                  </div>
                 </div>
               </div>
             </div>

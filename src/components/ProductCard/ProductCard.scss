@@ -4,7 +4,7 @@
     width: 220px;
     height: 280px;
     padding: 0.8rem;
-    box-shadow: 0 0 8px;
+    box-shadow: 0 0 4px #bbbbbb;
     border-radius: 5px;
     @include flexen(column, flex-start, space-between);
 

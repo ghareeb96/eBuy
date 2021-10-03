@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/eBuy/static/css/main.81af9332.chunk.css",
+    "main.js": "/eBuy/static/js/main.3708d03e.chunk.js",
+    "main.js.map": "/eBuy/static/js/main.3708d03e.chunk.js.map",
+    "runtime-main.js": "/eBuy/static/js/runtime-main.9cff952f.js",
+    "runtime-main.js.map": "/eBuy/static/js/runtime-main.9cff952f.js.map",
+    "static/js/2.4ca21faf.chunk.js": "/eBuy/static/js/2.4ca21faf.chunk.js",
+    "static/js/2.4ca21faf.chunk.js.map": "/eBuy/static/js/2.4ca21faf.chunk.js.map",
+    "index.html": "/eBuy/index.html",
+    "static/css/main.81af9332.chunk.css.map": "/eBuy/static/css/main.81af9332.chunk.css.map",
+    "static/js/2.4ca21faf.chunk.js.LICENSE.txt": "/eBuy/static/js/2.4ca21faf.chunk.js.LICENSE.txt",
+    "static/media/Cart.d7b02803.svg": "/eBuy/static/media/Cart.d7b02803.svg",
+    "static/media/Search.6630d2ca.svg": "/eBuy/static/media/Search.6630d2ca.svg",
+    "static/media/StarOutline.f3073cce.svg": "/eBuy/static/media/StarOutline.f3073cce.svg",
+    "static/media/StarSolid.986e7aa2.svg": "/eBuy/static/media/StarSolid.986e7aa2.svg",
+    "static/media/Wishlist.f358882f.svg": "/eBuy/static/media/Wishlist.f358882f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9cff952f.js",
+    "static/js/2.4ca21faf.chunk.js",
+    "static/css/main.81af9332.chunk.css",
+    "static/js/main.3708d03e.chunk.js"
+  ]
+}

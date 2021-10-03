@@ -3,30 +3,31 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
 
-export default function RangeSlider() {
-    const [value, setValue] = React.useState([100, 1000]);
+const RangeSlider = ({filtering, setFiltering}) => {
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        setFiltering({...filtering, priceRange : newValue});
     };
 
     return (
         <>
             <div className="price-range-values">
-                <h4>{value[0]}</h4>
-                <h4>{value[1]}</h4>
+                <h4>{filtering.priceRange[0]}</h4>
+                <h4>{filtering.priceRange[1]}</h4>
             </div>
 
             <Box sx={{ width: 180 }}>
                 <Slider
                     getAriaLabel={() => 'Price range'}
-                    value={value}
+                    value={filtering.priceRange}
                     onChange={handleChange}
                     valueLabelDisplay="auto"
-                    min = {100}
-                    max = {1000}
+                    min = {1}
+                    max = {2000}
                 />
             </Box>
         </>
     );
 }
+
+export default RangeSlider;

@@ -73,9 +73,14 @@
                         padding: 10px 15px;
                         border-bottom: 1px solid #ccc;
                         transition: all 0.2s ease-out;
+                        cursor: pointer;
 
                         &:hover {
                             background: #efefef;
+                        }
+
+                        &.active-color{
+                            background: lighten($secondary-accent-color, 55);
                         }
                     }
                 }
@@ -84,16 +89,26 @@
 
         &.rating {
             .filter-action {
+
                 .rating-option {
                     @include flexen(row, center);
                     margin: 0;
                     padding: 8px 15px;
                     width : 100%;
                     transition: all 0.2s ease-out;
+                    cursor: pointer;
 
                     &:hover {
                         background: #efefef;
                     }
+
+                    .icon{
+                        pointer-events: none;
+                    }
+                }
+
+                .active-rating{
+                    background: #ebebeb;
                 }
             }
         }

@@ -2,11 +2,11 @@ import React from 'react';
 import { ReactComponent as StarSolid } from "./StarSolid.svg";
 import { ReactComponent as StarOutline } from "./StarOutline.svg";
 
-const Rating = ({ rate }) => {
+const Rating = ({ rate,changeRate, filtering }) => {
     let stars = Array(5).fill(1);
 
     return (
-        <div className="rating-option product-rating" id={`rating${rate}`}>
+        <div className={parseInt(filtering.minRating) === rate ? "rating-option product-rating active-rating" : "rating-option product-rating"} id={rate} onClick={changeRate}>
             {
                 stars.map((star, index) => (
                     <>

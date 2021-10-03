@@ -76,6 +76,8 @@ span {
                         background: lighten($primary-accent-color,42);
                         margin-bottom: 10px;
                         border-radius: 5px;
+                        transition : all 0.2s ease-out;
+                        cursor: pointer;
 
                         h4{
                             font-size : 1.4rem;

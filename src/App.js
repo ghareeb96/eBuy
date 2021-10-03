@@ -7,7 +7,7 @@ import Products from './components/Products/Products'
 
 function App() {
   const initialFilters = {
-    categoryId: 0,
+    categoryId: 1,
     color: 'all',
     priceRange: [1, 2000],
     minRating: 1
@@ -57,13 +57,28 @@ function App() {
     let finalProducts = products;
 
     if (products !== null) {
-      if (filtering.categoryId !== 0) {
-        finalProducts = finalProducts.filter(product =>  product.categoryId === parseInt(filtering.categoryId))
+      if (parseInt(filtering.categoryId) !== 0) {
+        finalProducts = finalProducts.filter(product => product.categoryId === parseInt(filtering.categoryId))
+      }else{
+        finalProducts = products
       }
-
+      
       if (filtering.color !== 'all') {
         finalProducts = finalProducts.filter(product => product.color === filtering.color)
+      }else{
+        finalProducts = products
+        if (parseInt(filtering.categoryId) !== 0) {
+          finalProducts = finalProducts.filter(product => product.categoryId === parseInt(filtering.categoryId))
+        }
       }
+
+      if (filtering.minRating !== 1) {
+        finalProducts = finalProducts.filter(product => product.rating >= filtering.minRating)
+      }
+
+      finalProducts = finalProducts.filter(product => product.price >= filtering.priceRange[0] && product.price <= filtering.priceRange[1])
+
+      setFilteredProducts(finalProducts);
 
 
     }
@@ -74,7 +89,7 @@ function App() {
   return (
     <>
       {
-        products !== null ?
+        filteredProducts !== null ?
           <div className="App">
             <Header />
 
@@ -91,18 +106,22 @@ function App() {
               <h2 className="section-heading">Browse Products</h2>
               <div className="container">
                 <div className="filters-side">
-                  <Filters colors={colors} />
+                  <Filters
+                    colors={colors}
+                    filtering={filtering}
+                    setFiltering={setFiltering}
+                  />
                 </div>
                 <div className="products-side">
                   <div className="categories">
-                    <div className="category active-category" id="all">
+                    <div className={parseInt(filtering.categoryId) === 0 ?"category active-category" : "category"} id={0} onClick={changeCategory}>
                       <h4>All</h4>
                     </div>
                     {
                       categories ?
 
                         categories.map(category => (
-                          <div className="category" id={category.id} onClick={changeCategory}>
+                          <div className={parseInt(filtering.categoryId) === category.id ? "category active-category" : "category"} id={category.id} onClick={changeCategory}>
                             <h4>{category.name}</h4>
                           </div>
                         ))
@@ -111,7 +130,7 @@ function App() {
                     }
                   </div>
                   <div className="products">
-                    <Products products={products} />
+                    <Products products={filteredProducts} />
                   </div>
                 </div>
               </div>

@@ -48,7 +48,7 @@ const Slider = ({ items }) => {
             // eslint-disable-next-line react-hooks/exhaustive-deps
             sliding = setInterval(() => {
                 slideRight()
-            }, 2000);
+            }, 3000);
             return () => clearInterval(sliding);
         }
     }, [sliderPos, sliderWidth]);
